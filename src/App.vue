@@ -1,8 +1,8 @@
 <template>
-  <div
-    style="position: relative; display: flex; flex-direction: row; max-width: 100vw; max-height: 100vh; border: 1px solid red;">
+  <div style="position: relative; display: flex; flex-direction: row; max-width: 100vw; max-height: 100vh;">
     <div>
       <button @click="fetchImage()">New</button>
+      <button @click="openUrl(imageSrc)">Source</button>
     </div>
     <div id="root-div" style="width: 100vw; height: 100vh; display: flex; align-items: center;">
       <img
@@ -14,6 +14,8 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
+import { open } from '@tauri-apps/api/shell';
+
 
 const apiUrl = 'https://api.waifu.im/search';
 const params = {
@@ -23,7 +25,8 @@ const params = {
 };
 
 let apiResponseUrl = ref("");
-let dominant_color = ref("");
+let dominantColor = ref("");
+let imageSrc = ref("");
 
 const queryParams = new URLSearchParams(params);
 const requestUrl = `${apiUrl}?${queryParams}`;
@@ -34,8 +37,9 @@ function fetchImage() {
       if (response.ok) {
         response.json().then(data => {
           apiResponseUrl.value = data.images[0].url;
-          dominant_color.value = data.images[0].dominant_color;
-          document.getElementById('root-div').style.backgroundColor = dominant_color.value;
+          dominantColor.value = data.images[0].dominant_color;
+          imageSrc.value = data.images[0].source;
+          document.getElementById('root-div').style.backgroundColor = dominantColor.value;
         });
       } else {
         throw new Error('Request failed with status code: ' + response.status);
@@ -46,8 +50,12 @@ function fetchImage() {
     });
 }
 
+async function openUrl(url) {
+  await open(url);
+}
+
 onMounted(async () => {
-  fetchImage();
+  // fetchImage();
 });
 
 </script>
