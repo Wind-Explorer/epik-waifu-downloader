@@ -1,3 +1,80 @@
+/* style.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
-  margin: 0;
+    @apply transition-colors;
+}
+
+.root {
+    @apply absolute inset-0 dark:bg-neutral-800 overflow-hidden;
+}
+
+.container-width {
+    @apply max-w-[800px] mx-auto px-8 py-4;
+}
+
+.container {
+    @apply container-width h-full;
+}
+
+.top-bar {
+    @apply fixed container-width w-full z-50 inset-0 bg-white dark:bg-neutral-800 border-b-2 dark:border-b-neutral-700 top-bar-space flex flex-row justify-between gap-4;
+}
+
+.top-bar * {
+    @apply my-auto;
+}
+
+.top-bar-space {
+    @apply h-[100px];
+}
+
+.header {
+    @apply text-4xl font-semibold dark:text-white;
+}
+
+.subheader {
+    @apply text-lg dark:text-neutral-300;
+}
+
+.btn {
+    @apply text-accent-700 dark:text-accent-200 dark:bg-neutral-700 bg-neutral-100 font-semibold py-2 px-4 border-2 border-transparent rounded-xl;
+}
+
+.btn:hover {
+    @apply border-accent-300 dark:border-accent-500;
+}
+
+.btn:active {
+    @apply border-accent-200 dark:border-accent-600;
+}
+
+.btn:disabled {
+    @apply cursor-not-allowed opacity-50;
+}
+
+.btn-primary {
+    @apply text-white bg-accent-500 dark:bg-accent-600;
+}
+
+.btn-primary:hover {
+    @apply text-accent-100;
+}
+
+.btn-primary:active {
+    @apply text-accent-100 bg-accent-500;
+}
+
+label {
+    @apply text-lg dark:text-neutral-300;
+}
+
+.form-group {
+    @apply mb-4;
+}
+
+.form-control {
+    @apply w-full py-2 px-4 border-2 dark:text-white bg-neutral-50 dark:bg-neutral-700 border-neutral-200 dark:border-neutral-600 outline-none focus:border-accent-500 rounded-xl;
 }
