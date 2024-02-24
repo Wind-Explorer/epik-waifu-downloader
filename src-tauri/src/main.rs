@@ -10,6 +10,11 @@ fn greet(name: &str) -> String {
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![greet])
+        .on_window_event(|e| {
+            if let tauri::WindowEvent::Resized(_) = e.event() {
+                std::thread::sleep(std::time::Duration::from_nanos(1000));
+            }
+        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
