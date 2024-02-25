@@ -26,9 +26,9 @@
         </div>
         <div id="img-div" class="relative w-full h-screen">
           <img id="wfimgbg" class="absolute inset-0 blur-3xl scale-110 m-auto transition-all duration-1000"
-            :src="apiResponseUrl" alt="waifu image" />
+            :src="apiResponseUrl" v-show="apiResponseUrl" alt="waifu image" />
           <img id="wfimg" class="absolute inset-0 max-h-screen m-auto transition-all duration-1000" :src="apiResponseUrl"
-            alt="waifu image" />
+            v-show="apiResponseUrl" />
         </div>
       </div>
     </div>
