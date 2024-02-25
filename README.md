@@ -1,3 +1,6 @@
+![Epik Waifu Downloader app icon](./src-tauri/icons/128x128.png)
+
+
 # Epik Waifu Downloader
 
 The most epik waifu downloader app in existence 😼
