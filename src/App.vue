@@ -7,7 +7,7 @@
           <div class="flex flex-col gap-4">
             <fwb-button color="default" square shadow="blue" @click="fetchImage()">
               <div class="flex flex-col gap-2 text-left">
-                <svg-icon type="mdi" :path="mdiRefresh" />
+                <svg-icon id="new-img-icn" style="transition: 500ms" type="mdi" :path="mdiRefresh" />
                 <span>New Waifu</span>
               </div>
             </fwb-button>
@@ -42,12 +42,20 @@ import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiRefresh, mdiImageSearchOutline } from '@mdi/js';
 import { FwbButton } from 'flowbite-vue'
 
+import { useToast } from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+
+const $toast = useToast();
+
 let apiResponseUrl = ref("");
 let imageSrc = ref("");
 let artistName = ref("");
 
 let img = null;
-let imgbg = null;
+let imgBg = null;
+let newImgIcn = null;
+
+let icnRotateDeg = 0;
 
 const apiUrl = 'https://api.waifu.im/search';
 const params = {
@@ -61,15 +69,17 @@ const requestUrl = `${apiUrl}?${queryParams}`;
 
 function startChangeImg() {
   img.classList.add('blur-3xl', 'opacity-0');
+  icnRotateDeg += 360;
+  newImgIcn.style.transform = `rotate(${icnRotateDeg}deg)`;
+
   setTimeout(() => {
-    imgbg.classList.add('saturate-0', 'opacity-0');
+    imgBg.classList.add('saturate-0', 'opacity-0');
   }, 500);
 }
 
 function stopChangeImg() {
-
   setTimeout(() => {
-    imgbg.classList.remove('saturate-0', 'opacity-0');
+    imgBg.classList.remove('saturate-0', 'opacity-0');
     img.classList.remove('blur-3xl', 'opacity-0');
   }, 1500);
 }
@@ -80,7 +90,6 @@ function fetchImage() {
     .then(response => {
       if (response.ok) {
         response.json().then(data => {
-          console.log(data.images[0])
           apiResponseUrl.value = data.images[0].url;
           imageSrc.value = data.images[0].source;
           artistName.value = data.images[0].artist ? data.images[0].artist.name : "Unknown";
@@ -104,6 +113,7 @@ async function openUrl(url) {
     await open(url);
   } catch (error) {
     console.error('An error occurred:', error.message);
+    let instance = $toast.error('Sorry, no source for this one.');
   }
 }
 
@@ -113,7 +123,8 @@ function closeModal() {
 
 onMounted(async () => {
   img = document.getElementById('wfimg');
-  imgbg = document.getElementById('wfimgbg');
+  imgBg = document.getElementById('wfimgbg');
+  newImgIcn = document.getElementById('new-img-icn');
   fetchImage();
 });
 

@@ -15,7 +15,8 @@
     "@tauri-apps/api": "^1.5.2",
     "flowbite": "^2.3.0",
     "flowbite-vue": "^0.1.2",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-toast-notification": "^3.1.2"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.5.8",

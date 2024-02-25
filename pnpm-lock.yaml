@@ -23,6 +23,9 @@ dependencies:
   vue:
     specifier: ^3.3.4
     version: 3.4.19
+  vue-toast-notification:
+    specifier: ^3.1.2
+    version: 3.1.2(vue@3.4.19)
 
 devDependencies:
   '@tauri-apps/cli':
@@ -1474,6 +1477,15 @@ packages:
     resolution: {integrity: sha512-7+iqOueLU7uc9NrMfrzbG8hwMqchfVfSzpVlCMeJQe4pyibqyoifDNbKTZvwxZKDvGkB+PdFeKvnGZMoEb8esg==}
     peerDependencies:
       vue: ^3.0.0
+    dependencies:
+      vue: 3.4.19
+    dev: false
+
+  /vue-toast-notification@3.1.2(vue@3.4.19):
+    resolution: {integrity: sha512-oNRL/W9aaHoeScp+iTIW7k09vM16/+8aptp2maa+7qTB43JuxmAgKdXKFYtf+uvSNOYYq2BIWgLCeJ61pwom/A==}
+    engines: {node: '>=12.15.0'}
+    peerDependencies:
+      vue: ^3.0
     dependencies:
       vue: 3.4.19
     dev: false
