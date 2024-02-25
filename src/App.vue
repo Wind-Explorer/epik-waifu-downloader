@@ -39,8 +39,8 @@
 import { onMounted, ref } from 'vue';
 import { open } from '@tauri-apps/api/shell';
 import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiRefresh, mdiImageSearchOutline, mdiAccountDetails } from '@mdi/js';
-import { FwbButton, FwbModal } from 'flowbite-vue'
+import { mdiRefresh, mdiImageSearchOutline } from '@mdi/js';
+import { FwbButton } from 'flowbite-vue'
 
 let apiResponseUrl = ref("");
 let imageSrc = ref("");
