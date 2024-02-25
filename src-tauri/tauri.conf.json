@@ -6,8 +6,8 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "epik-waifu-downloader",
-    "version": "0.0.0"
+    "productName": "Epik Waifu Downloader",
+    "version": "1.0.0"
   },
   "tauri": {
     "allowlist": {
@@ -19,7 +19,7 @@
     },
     "windows": [
       {
-        "title": "epik-waifu-downloader",
+        "title": "Epik Waifu Downloader",
         "width": 800,
         "height": 600
       }
@@ -30,7 +30,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "cn.Wind-Explorer.epik-waifu-downloader",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
