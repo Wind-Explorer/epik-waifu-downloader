@@ -3,6 +3,8 @@
 The most epik waifu downloader app in existence 😼
 ![Epik Waifu Downloader screenshot](./ewd.png)
 
+[Download now!](https://github.com/Wind-Explorer/epik-waifu-downloader/releases/latest)
+
 ## Features
 
 - View waifus
