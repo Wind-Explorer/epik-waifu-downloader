@@ -19,6 +19,10 @@
               </div>
             </fwb-button>
           </div>
+          <div class="dark:text-white mx-auto p-3"
+            @click="openUrl('https://www.github.com/wind-explorer/epik-waifu-downloader')">
+            <svg-icon type="mdi" :path="mdiGithub"></svg-icon>
+          </div>
           <!-- artist name   
           <div class="flex flex-col gap-2 text-left dark:text-white bg-neutral-700 p-3 rounded-lg">
             <p class="text-blue-500 font-bold">{{ artistName }}</p>
@@ -39,7 +43,7 @@
 import { onMounted, ref } from 'vue';
 import { open } from '@tauri-apps/api/shell';
 import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiRefresh, mdiImageSearchOutline } from '@mdi/js';
+import { mdiRefresh, mdiImageSearchOutline, mdiGithub } from '@mdi/js';
 import { FwbButton } from 'flowbite-vue'
 
 import { useToast } from 'vue-toast-notification';
