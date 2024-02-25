@@ -95,11 +95,11 @@ function fetchImage() {
           artistName.value = data.images[0].artist ? data.images[0].artist.name : "Unknown";
         });
       } else {
-        throw new Error('Request failed with status code: ' + response.status);
+        $toast.warning('Sorry, no waifu for you. Try again later.');
       }
     })
     .catch(error => {
-      console.error('An error occurred:', error.message);
+      $toast.warning('Fix your internet to see waifu.');
     })
     .finally(() => {
       setTimeout(() => {
@@ -112,8 +112,7 @@ async function openUrl(url) {
   try {
     await open(url);
   } catch (error) {
-    console.error('An error occurred:', error.message);
-    let instance = $toast.error('Sorry, no source for this one.');
+    $toast.error('Sorry, no source for this one.');
   }
 }
 
